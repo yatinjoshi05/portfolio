@@ -1,0 +1,681 @@
+@import './styles/reference-tailwind.css';
+@import './styles/reference-custom.css';
+
+@font-face {
+  font-family: 'Host Grotesk';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('/_next/static/media/3a11180d498b75c0-s.p.2028s2bhlck6k.woff2') format('woff2'),
+       url('/media/3a11180d498b75c0-s.p.2028s2bhlck6k.woff2') format('woff2');
+}
+
+:root {
+  --font-host-grotesk: 'Host Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #070707;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-host-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure vibrant linear gradient works everywhere regardless of Tailwind syntax */
+.bg-linear-to-r,
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, #F16B0D, #E61416) !important;
+}
+
+.from-\[\#F16B0D\] {
+  --tw-gradient-from: #F16B0D !important;
+  --tw-gradient-to: #E61416 !important;
+  --tw-gradient-stops: #F16B0D, #E61416 !important;
+}
+
+.to-\[\#E61416\] {
+  --tw-gradient-to: #E61416 !important;
+}
+
+/* Radial mask fill with guaranteed background gradient */
+.radial-mask-bg-fill {
+  background-image: linear-gradient(to right, #F16B0D, #E61416) !important;
+}
+
+/* Systems I've Built Showcase Styles */
+.mockup-header {
+  height: 38px;
+  background-color: #14151C !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+}
+
+.mockup-card {
+  background-color: #0C0D12 !important;
+}
+
+.mockup-canvas {
+  background-color: #07070A !important;
+}
+
+@media (max-width: 768px) {
+  .mockup-header {
+    height: 34px;
+    padding: 0 10px;
+  }
+  .mockup-badge {
+    display: none !important;
+  }
+}
+
+/* Hero Floating Showcase - 5 Visual Seamless Loop */
+.marquee-1 {
+  will-change: transform;
+  animation: 26s linear infinite marquee-scroll-y !important;
+}
+
+.marquee-2 {
+  will-change: transform;
+  animation: 36s linear infinite marquee-scroll-y-2 !important;
+}
+
+@keyframes marquee-scroll-y {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes marquee-scroll-y-2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@media (max-width: 1025px) {
+  @keyframes marquee-scroll-y {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  @keyframes marquee-scroll-y-2 {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-1,
+  .marquee-2 {
+    animation: none !important;
+  }
+}
+
+/* GTM Engineering Showcase Card Styling */
+.services-card.gtm-card {
+  width: 27vw !important;
+  height: 30vw !important;
+  padding: 1.8vw !important;
+  background-color: #121215 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 1vw !important;
+}
+
+.gtm-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-top: 0.8vw;
+  margin-bottom: 0.8vw;
+}
+
+.gtm-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  opacity: 0.75;
+  flex-shrink: 0;
+  margin-right: 0.6vw;
+  margin-top: 0.45em;
+  display: inline-block;
+}
+
+.services-card:hover .gtm-bullet {
+  opacity: 1;
+}
+
+@media (max-width: 1025px) {
+  .services-card.gtm-card {
+    width: 55vw !important;
+    height: 66vw !important;
+    padding: 3.5vw !important;
+    border-radius: 1.6vw !important;
+  }
+  .gtm-divider {
+    margin-top: 1.8vw;
+    margin-bottom: 1.8vw;
+  }
+  .gtm-bullet {
+    width: 4px;
+    height: 4px;
+    margin-right: 1.2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-card.gtm-card {
+    width: 78vw !important;
+    height: 86vw !important;
+    padding: 5.5vw !important;
+    border-radius: 3vw !important;
+  }
+  .gtm-divider {
+    margin-top: 2.6vw;
+    margin-bottom: 2.6vw;
+  }
+  .gtm-bullet {
+    width: 4px;
+    height: 4px;
+    margin-right: 2vw;
+  }
+}
+
+/* Engineering Principles Floating Visual Showcase */
+.principles-image-container {
+  width: 42vw !important;
+  display: flex !important;
+  justify-content: center !important;
+  position: absolute !important;
+  right: 5vw !important;
+  pointer-events: none !important;
+  z-index: 20 !important;
+}
+
+.principles-image-card {
+  width: 42vw !important;
+  height: 23.6vw !important;
+  position: relative !important;
+  background-color: #0c0c0c !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+@media (max-width: 1025px) {
+  .principles-image-container {
+    display: none !important;
+  }
+}
+
+.principles-inline-visual {
+  display: none !important;
+}
+
+@media (max-width: 1025px) {
+  .principles-inline-visual {
+    display: block !important;
+    margin-top: 1.5rem !important;
+    width: 100% !important;
+    border-radius: 0.75rem !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background-color: #0c0c0c !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+.principles-list-col {
+  width: 100% !important;
+  max-width: 46vw !important;
+}
+
+@media (max-width: 1025px) {
+  .principles-list-col {
+    max-width: 100% !important;
+  }
+}
+
+/* Tool selector row responsive positioning */
+.tool-selector-row {
+  top: -2.5vw;
+}
+@media (max-width: 1025px) {
+  .tool-selector-row {
+    top: -4.2vw;
+  }
+}
+@media (max-width: 768px) {
+  .tool-selector-row {
+    top: -6vw;
+  }
+}
+
+/* Tool Carousel Avatar Buttons */
+.tool-avatar-btn {
+  width: 3.8vw;
+  height: 3.8vw;
+  border-radius: 9999px;
+  overflow: hidden;
+  clip-path: circle(50%);
+  cursor: pointer;
+  background-color: #121215;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75vw;
+  opacity: 0.65;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.tool-avatar-btn:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.35);
+  background-color: #18181c;
+}
+
+.tool-avatar-btn.is-active {
+  width: 5vw;
+  height: 5vw;
+  opacity: 1;
+  background-color: #141418;
+  border: 2px solid #F16B0D;
+  box-shadow: 0 0 22px rgba(241, 107, 13, 0.35), inset 0 0 10px rgba(241, 107, 13, 0.12);
+  margin-inline: 1.4vw;
+  padding: 0.9vw;
+  z-index: 30;
+}
+
+.tool-avatar-btn.is-active img {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}
+
+@media (max-width: 1025px) {
+  .tool-avatar-btn {
+    width: 6.8vw;
+    height: 6.8vw;
+    padding: 1.2vw;
+  }
+  .tool-avatar-btn.is-active {
+    width: 8.8vw;
+    height: 8.8vw;
+    margin-inline: 2.2vw;
+    padding: 1.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .tool-avatar-btn {
+    width: 9.5vw;
+    height: 9.5vw;
+    padding: 1.6vw;
+  }
+  .tool-avatar-btn.is-active {
+    width: 12.5vw;
+    height: 12.5vw;
+    margin-inline: 3vw;
+    padding: 2.2vw;
+  }
+}
+
+/* Tool Card Highlights Container */
+.tool-highlights-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .tool-highlights-container {
+    gap: 5px;
+    max-width: 92%;
+  }
+}
+
+/* Get in Touch Modal Overlay & Content */
+.git-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  padding: 1.5rem;
+}
+
+.git-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  will-change: opacity;
+}
+
+.git-modal-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  will-change: transform, opacity;
+}
+
+.git-modal-card {
+  position: relative;
+  width: 100%;
+  max-height: 86vh;
+  max-height: calc(100dvh - 3rem);
+  overflow-y: auto;
+  border-radius: 28px;
+  background: rgba(13, 14, 18, 0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.85), 0 0 50px -15px rgba(241, 107, 13, 0.15);
+  color: #ffffff;
+  padding: 3.5rem 3.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.git-modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+.git-modal-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+/* Close Button with Signature Gradient & Smooth Rotating Cross */
+.git-close-btn {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F16B0D 0%, #E61416 100%);
+  box-shadow: 0 4px 16px rgba(241, 107, 13, 0.45);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.git-close-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(241, 107, 13, 0.65);
+}
+
+.git-close-cross-1 {
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  transform: rotate(45deg);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.git-close-cross-2 {
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  transform: rotate(-45deg);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.git-close-btn:hover .git-close-cross-1 {
+  transform: rotate(225deg);
+}
+
+.git-close-btn:hover .git-close-cross-2 {
+  transform: rotate(135deg);
+}
+
+/* Responsive Two-Column Grid */
+.git-modal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .git-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+.git-modal-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.git-modal-title {
+  font-size: clamp(2.4rem, 3.4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.git-modal-subtitle {
+  margin-top: 1.25rem;
+  font-size: 1.08rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 0;
+}
+
+.git-modal-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.25rem;
+  font-size: 0.75rem;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.git-modal-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #F16B0D;
+  box-shadow: 0 0 8px #F16B0D;
+  animation: pulse 2s infinite;
+}
+
+.git-modal-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.git-social-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.git-social-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.git-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.git-social-label {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.git-social-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.git-icon-github {
+  background: #18191E;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.git-icon-linkedin {
+  background: #0A66C2;
+  border: 1px solid rgba(10, 102, 194, 0.6);
+  box-shadow: 0 2px 10px rgba(10, 102, 194, 0.35);
+}
+
+.git-icon-instagram {
+  background: linear-gradient(135deg, #405DE6 0%, #833AB4 30%, #C13584 55%, #E1306C 75%, #FD1D1D 90%, #F56040 100%);
+  border: 1px solid rgba(225, 48, 108, 0.4);
+  box-shadow: 0 2px 10px rgba(225, 48, 108, 0.35);
+}
+
+.git-icon-whatsapp {
+  background: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.6);
+  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.35);
+}
+
+.git-social-card:hover .git-social-icon-box {
+  transform: scale(1.06);
+}
+
+.git-resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.05rem 1.25rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(241, 107, 13, 0.1) 0%, rgba(230, 20, 22, 0.07) 100%);
+  border: 1px solid rgba(241, 107, 13, 0.32);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 4px 20px -5px rgba(241, 107, 13, 0.12);
+}
+
+.git-resume-card:hover {
+  background: linear-gradient(135deg, rgba(241, 107, 13, 0.18) 0%, rgba(230, 20, 22, 0.12) 100%);
+  border-color: rgba(241, 107, 13, 0.65);
+  box-shadow: 0 6px 26px -5px rgba(241, 107, 13, 0.24);
+  transform: translateY(-1px);
+}
+
+.git-social-card:focus-visible,
+.git-resume-card:focus-visible {
+  outline: 2px solid #F16B0D;
+  outline-offset: 2px;
+}
+
+.git-resume-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #F16B0D 0%, #E61416 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(241, 107, 13, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.git-resume-card:hover .git-resume-icon-box {
+  transform: scale(1.06);
+}
+
+@media (max-width: 1024px) {
+  .git-modal-card {
+    padding: 2.75rem 2.25rem;
+    border-radius: 24px;
+    max-height: calc(100dvh - 2.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .git-modal-overlay {
+    padding: 0.75rem;
+  }
+  .git-modal-card {
+    padding: 2.25rem 1.25rem 1.5rem;
+    border-radius: 20px;
+    max-height: calc(100dvh - 1.5rem);
+  }
+  .git-close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+  .git-close-cross-1,
+  .git-close-cross-2 {
+    width: 14px;
+  }
+  .git-modal-subtitle {
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+  }
+  .git-modal-status {
+    display: none;
+  }
+}

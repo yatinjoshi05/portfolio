@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Environment and local settings
+.env
+.env.local
+.env.*.local
+
+# Editor & Agent temporary files
+.agent/
+.uix/
+*.log
+
+# Root-level audit and scratch screenshots
+/*.png
+/*.jpg
+/*.txt
+/*.cjs
+/*.mjs
+/*.js
+/*.py
+/*.json
+!package.json
+!package-lock.json
+!vite.config.js
+/downloaded/
+/github_profile_repo/
+/scripts/
+
+# Do NOT ignore images in public or src
+!public/**
+!src/**

@@ -1,0 +1,20 @@
+<svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M175.277 181.636C185.19 189.071 200.06 184.115 186.429 170.484C145.536 130.83 154.211 21.7824 103.404 21.7824C52.5979 21.7824 61.2722 130.83 20.3793 170.484C5.50915 185.354 21.6185 189.071 31.5319 181.636C69.9464 155.614 67.4681 109.764 103.404 109.764C139.34 109.764 136.862 155.614 175.277 181.636Z" fill="white"/>
+  <mask id="agl_m" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="13" y="21" width="179" height="165">
+    <path d="M175.277 181.636C185.19 189.071 200.06 184.115 186.429 170.484C145.536 130.83 154.211 21.7824 103.404 21.7824C52.5979 21.7824 61.2722 130.83 20.3793 170.484C5.50915 185.354 21.6185 189.071 31.5319 181.636C69.9464 155.614 67.4681 109.764 103.404 109.764C139.34 109.764 136.862 155.614 175.277 181.636Z" fill="white"/>
+  </mask>
+  <g mask="url(#agl_m)">
+    <g filter="url(#f0)"><ellipse cx="48.4" cy="56.9" rx="48.4" ry="56.9" transform="matrix(-0.11 0.99 -0.99 -0.11 125.4 -50.4)" fill="#FFE432"/></g>
+    <g filter="url(#f1)"><ellipse cx="189.7" cy="57.2" rx="62.6" ry="64" transform="rotate(76.9 189.7 57.2)" fill="#FC413D"/></g>
+    <g filter="url(#f2)"><ellipse cx="3.9" cy="71.1" rx="65.5" ry="84.8" transform="rotate(74.1 3.9 71.1)" fill="#00B95C"/></g>
+    <g filter="url(#f5)"><ellipse cx="145.6" cy="205.3" rx="61.6" ry="59.3" transform="rotate(76.9 145.6 205.3)" fill="#3186FF"/></g>
+    <g filter="url(#f6)"><ellipse cx="71.3" cy="75.2" rx="71.3" ry="75.2" transform="matrix(-0.41 0.91 -0.91 -0.41 199.8 -49.6)" fill="#FBBC04"/></g>
+  </g>
+  <defs>
+    <filter id="f0" x="-10" y="-73" width="146" height="130" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="f1" x="47" y="-84" width="285" height="282" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="39"/></filter>
+    <filter id="f2" x="-146" y="-62" width="300" height="268" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="33"/></filter>
+    <filter id="f5" x="22" y="80" width="246" height="250" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="31"/></filter>
+    <filter id="f6" x="-30" y="-145" width="264" height="259" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="28"/></filter>
+  </defs>
+</svg>

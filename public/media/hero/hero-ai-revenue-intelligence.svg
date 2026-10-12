@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100">
+  <defs>
+    <radialGradient id="dashGlow1" cx="20%" cy="15%" r="65%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#08090C" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="dashGlow2" cx="80%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#08090C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14161F" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0E1017" stop-opacity="0.98" />
+    </linearGradient>
+    <linearGradient id="glowBorder" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.4" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+  </defs>
+
+  <!-- Deep Obsidian Slate Background -->
+  <rect width="1600" height="1100" fill="#090A0E" />
+  <rect width="1600" height="1100" fill="url(#dashGlow1)" />
+  <rect width="1600" height="1100" fill="url(#dashGlow2)" />
+
+  <!-- Subtle Blueprint Matrix Grid -->
+  <g opacity="0.04" stroke="#FFFFFF" stroke-width="1">
+    <pattern id="dashgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+      <circle cx="0" cy="0" r="1.2" fill="#FFFFFF" />
+    </pattern>
+    <rect width="1600" height="1100" fill="url(#dashgrid)" />
+  </g>
+
+  <!-- Window Frame Header -->
+  <g transform="translate(50, 35)">
+    <rect width="1500" height="46" rx="12" fill="#11131A" stroke="#1E222D" stroke-width="1" />
+    <circle cx="24" cy="23" r="5" fill="#FF5F56" />
+    <circle cx="42" cy="23" r="5" fill="#FFBD2E" />
+    <circle cx="60" cy="23" r="5" fill="#27C93F" />
+    <text x="88" y="28" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">
+      Revenue Intelligence Engine • Autonomous Account Scoring &amp; Routing System
+    </text>
+    
+    <g transform="translate(1310, 10)">
+      <rect width="165" height="26" rx="13" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1" stroke-opacity="0.4" />
+      <circle cx="14" cy="13" r="4" fill="#10B981" />
+      <text x="26" y="17" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">LIVE RADAR ACTIVE</text>
+    </g>
+  </g>
+
+  <!-- Dashboard App Nav Bar -->
+  <g transform="translate(50, 100)">
+    <rect width="1500" height="60" rx="14" fill="#13151D" stroke="#1F2430" stroke-width="1" />
+    <text x="24" y="37" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="800" letter-spacing="0.5">
+      AI REVENUE INTELLIGENCE
+    </text>
+    <rect x="340" y="15" width="90" height="30" rx="8" fill="#1E2330" />
+    <text x="358" y="35" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Accounts</text>
+    
+    <text x="460" y="35" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Intent Radar</text>
+    <text x="570" y="35" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Scoring Rules</text>
+    <text x="690" y="35" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Sales Routing</text>
+    <text x="810" y="35" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Telemetry</text>
+
+    <!-- Right Quick Filter -->
+    <rect x="1260" y="15" width="215" height="30" rx="8" fill="#1A1E29" stroke="#2B3242" stroke-width="1" />
+    <text x="1278" y="35" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="12">Model: Claude 3.5 Sonnet</text>
+  </g>
+
+  <!-- Top KPI Cards Row -->
+  <g transform="translate(50, 180)">
+    <!-- KPI 1 -->
+    <g filter="url(#cardShadow)">
+      <rect width="355" height="105" rx="14" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="20" y="32" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">INTENT VELOCITY</text>
+      <text x="20" y="72" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800">94.2%</text>
+      <rect x="150" y="48" width="85" height="24" rx="6" fill="#10B981" fill-opacity="0.15" />
+      <text x="160" y="64" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">▲ +18.4%</text>
+      <text x="20" y="93" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11">Surge detected in 38 accounts</text>
+    </g>
+
+    <!-- KPI 2 -->
+    <g transform="translate(380, 0)" filter="url(#cardShadow)">
+      <rect width="355" height="105" rx="14" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="20" y="32" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">AI-QUALIFIED PIPELINE</text>
+      <text x="20" y="72" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800">$1,420,000</text>
+      <text x="20" y="93" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11">High-propensity deal flow</text>
+    </g>
+
+    <!-- KPI 3 -->
+    <g transform="translate(760, 0)" filter="url(#cardShadow)">
+      <rect width="355" height="105" rx="14" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="20" y="32" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">DECISION LATENCY</text>
+      <text x="20" y="72" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800">385 ms</text>
+      <rect x="175" y="48" width="95" height="24" rx="6" fill="#3B82F6" fill-opacity="0.15" />
+      <text x="185" y="64" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">Real-time</text>
+      <text x="20" y="93" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11">From inbound signal to CRM sync</text>
+    </g>
+
+    <!-- KPI 4 -->
+    <g transform="translate(1140, 0)" filter="url(#cardShadow)">
+      <rect width="360" height="105" rx="14" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="20" y="32" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">DISPATCHED TO REPS</text>
+      <text x="20" y="72" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="800">42 Deals</text>
+      <rect x="185" y="48" width="95" height="24" rx="6" fill="#8B5CF6" fill-opacity="0.15" />
+      <text x="195" y="64" fill="#A78BFA" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">Automated</text>
+      <text x="20" y="93" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11">Slack alert + calendar invite task</text>
+    </g>
+  </g>
+
+  <!-- Main Content Grid -->
+  <g transform="translate(50, 310)">
+    <!-- Left Column: Account Scoring & Lead Qualification (Width: 880) -->
+    <g filter="url(#cardShadow)">
+      <rect width="880" height="730" rx="16" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      
+      <!-- Panel Header -->
+      <g transform="translate(24, 24)">
+        <text x="0" y="16" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">
+          Account Scoring &amp; Lead Qualification
+        </text>
+        <text x="0" y="38" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12">
+          Ranked by multi-factor firmographic fit, product intent surge, and authority pre-scoring
+        </text>
+      </g>
+
+      <!-- Account Rows -->
+      <!-- Account 1 -->
+      <g transform="translate(24, 85)">
+        <rect width="832" height="135" rx="12" fill="#12141C" stroke="#10B981" stroke-width="1.2" stroke-opacity="0.5" />
+        <g transform="translate(20, 24)">
+          <text x="0" y="16" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">Acme Cloud Technologies</text>
+          <text x="0" y="36" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="12">Enterprise B2B SaaS • 450 Employees • $65M ARR • AWS + Snowflake</text>
+          
+          <!-- Badges -->
+          <rect x="0" y="52" width="105" height="24" rx="6" fill="#10B981" fill-opacity="0.15" />
+          <text x="12" y="68" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">TIER 1 FIT (98%)</text>
+
+          <rect x="115" y="52" width="135" height="24" rx="6" fill="#3B82F6" fill-opacity="0.15" />
+          <text x="125" y="68" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">BUYING STAGE: SURGE</text>
+
+          <rect x="260" y="52" width="145" height="24" rx="6" fill="#8B5CF6" fill-opacity="0.15" />
+          <text x="270" y="68" fill="#C084FC" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">ROUTE: SENIOR AE (US)</text>
+        </g>
+        
+        <!-- Score Dial Box -->
+        <g transform="translate(685, 20)">
+          <rect width="125" height="95" rx="10" fill="#161A24" stroke="#1E2330" stroke-width="1" />
+          <text x="62" y="30" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ICP SCORE</text>
+          <text x="62" y="68" fill="#10B981" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">98</text>
+          <text x="62" y="86" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">QUALIFIED</text>
+        </g>
+      </g>
+
+      <!-- Account 2 -->
+      <g transform="translate(24, 235)">
+        <rect width="832" height="135" rx="12" fill="#12141C" stroke="#3B82F6" stroke-width="1.2" stroke-opacity="0.4" />
+        <g transform="translate(20, 24)">
+          <text x="0" y="16" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">Veloce Health Systems</text>
+          <text x="0" y="36" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="12">HealthTech • 180 Employees • Series B ($28M) • HIPAA Compliant</text>
+          
+          <rect x="0" y="52" width="105" height="24" rx="6" fill="#3B82F6" fill-opacity="0.15" />
+          <text x="12" y="68" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">TIER 1 FIT (92%)</text>
+
+          <rect x="115" y="52" width="155" height="24" rx="6" fill="#F59E0B" fill-opacity="0.15" />
+          <text x="125" y="68" fill="#FBBF24" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">EVAL: TECH DOCS READ</text>
+
+          <rect x="280" y="52" width="145" height="24" rx="6" fill="#8B5CF6" fill-opacity="0.15" />
+          <text x="290" y="68" fill="#C084FC" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">ROUTE: SALES ENG POD</text>
+        </g>
+        
+        <g transform="translate(685, 20)">
+          <rect width="125" height="95" rx="10" fill="#161A24" stroke="#1E2330" stroke-width="1" />
+          <text x="62" y="30" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ICP SCORE</text>
+          <text x="62" y="68" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">92</text>
+          <text x="62" y="86" fill="#93C5FD" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">QUALIFIED</text>
+        </g>
+      </g>
+
+      <!-- Account 3 -->
+      <g transform="translate(24, 385)">
+        <rect width="832" height="135" rx="12" fill="#12141C" stroke="#8B5CF6" stroke-width="1.2" stroke-opacity="0.4" />
+        <g transform="translate(20, 24)">
+          <text x="0" y="16" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">DataMatrix Infrastructure</text>
+          <text x="0" y="36" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="12">DevOps Platform • 90 Employees • $18M ARR • Kubernetes Native</text>
+          
+          <rect x="0" y="52" width="105" height="24" rx="6" fill="#8B5CF6" fill-opacity="0.15" />
+          <text x="12" y="68" fill="#C084FC" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">TIER 2 FIT (86%)</text>
+
+          <rect x="115" y="52" width="155" height="24" rx="6" fill="#3B82F6" fill-opacity="0.15" />
+          <text x="125" y="68" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">PRICING PAGE RE-VISIT</text>
+
+          <rect x="280" y="52" width="145" height="24" rx="6" fill="#10B981" fill-opacity="0.15" />
+          <text x="290" y="68" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">SLACK ALERT: REP CLAIM</text>
+        </g>
+        
+        <g transform="translate(685, 20)">
+          <rect width="125" height="95" rx="10" fill="#161A24" stroke="#1E2330" stroke-width="1" />
+          <text x="62" y="30" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ICP SCORE</text>
+          <text x="62" y="68" fill="#C084FC" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">86</text>
+          <text x="62" y="86" fill="#D8B4FE" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">QUALIFIED</text>
+        </g>
+      </g>
+
+      <!-- Account 4 (Lower Score Nurture) -->
+      <g transform="translate(24, 535)">
+        <rect width="832" height="135" rx="12" fill="#101218" stroke="#252A38" stroke-width="1" />
+        <g transform="translate(20, 24)">
+          <text x="0" y="16" fill="#CBD5E1" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">PulseGrid Media</text>
+          <text x="0" y="36" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12">Digital Agency • 14 Employees • Seed Stage • Non-ICP Headcount</text>
+          
+          <rect x="0" y="52" width="115" height="24" rx="6" fill="#64748B" fill-opacity="0.15" />
+          <text x="12" y="68" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">TIER 3 FIT (54%)</text>
+
+          <rect x="125" y="52" width="145" height="24" rx="6" fill="#64748B" fill-opacity="0.15" />
+          <text x="135" y="68" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">LOW INTENT SIGNALS</text>
+
+          <rect x="280" y="52" width="155" height="24" rx="6" fill="#64748B" fill-opacity="0.15" />
+          <text x="290" y="68" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">AUTO-NURTURE DRIP</text>
+        </g>
+        
+        <g transform="translate(685, 20)">
+          <rect width="125" height="95" rx="10" fill="#141720" stroke="#1E2330" stroke-width="1" />
+          <text x="62" y="30" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">ICP SCORE</text>
+          <text x="62" y="68" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">54</text>
+          <text x="62" y="86" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" text-anchor="middle">NURTURE</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Right Column: Intent Signals & Sales Routing Summary (Width: 595) -->
+    <!-- Top Right Card: Live Intent Signal Stream -->
+    <g transform="translate(905, 0)" filter="url(#cardShadow)">
+      <rect width="595" height="355" rx="16" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="24" y="38" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">
+        Live Intent Signals Radar
+      </text>
+      <text x="24" y="58" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12">
+        Surge events &amp; high-propensity telemetry stream
+      </text>
+
+      <g transform="translate(24, 80)">
+        <!-- Signal 1 -->
+        <circle cx="8" cy="18" r="5" fill="#10B981" />
+        <line x1="8" y1="28" x2="8" y2="70" stroke="#1E2330" stroke-width="2" />
+        <text x="25" y="16" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Enterprise Pricing Surge (Acme Cloud)</text>
+        <text x="25" y="34" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">VP Engineering + 3 Devs viewed enterprise calculator in 2h</text>
+        
+        <!-- Signal 2 -->
+        <circle cx="8" cy="85" r="5" fill="#3B82F6" />
+        <line x1="8" y1="95" x2="8" y2="140" stroke="#1E2330" stroke-width="2" />
+        <text x="25" y="83" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">API Gateway Integration Spike (Veloce)</text>
+        <text x="25" y="101" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">Production webhook endpoint hit 120 times in Sandbox</text>
+
+        <!-- Signal 3 -->
+        <circle cx="8" cy="155" r="5" fill="#8B5CF6" />
+        <line x1="8" y1="165" x2="8" y2="210" stroke="#1E2330" stroke-width="2" />
+        <text x="25" y="153" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Headcount Surge &amp; Hiring Trigger</text>
+        <text x="25" y="171" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">Clay waterfall detected 8 new DevOps engineer postings</text>
+
+        <!-- Signal 4 -->
+        <circle cx="8" cy="225" r="5" fill="#F59E0B" />
+        <text x="25" y="223" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Security &amp; SOC2 Audit Request</text>
+        <text x="25" y="241" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">Downloaded security whitepaper from corporate apex domain</text>
+      </g>
+    </g>
+
+    <!-- Bottom Right Card: Sales Routing Summary -->
+    <g transform="translate(905, 375)" filter="url(#cardShadow)">
+      <rect width="595" height="355" rx="16" fill="url(#cardGrad)" stroke="#1F2430" stroke-width="1" />
+      <text x="24" y="38" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700">
+        Sales Routing &amp; Rep Dispatch
+      </text>
+      <text x="24" y="58" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12">
+        Deterministic rules + AI-generated rep briefing
+      </text>
+
+      <g transform="translate(24, 80)">
+        <rect width="547" height="65" rx="10" fill="#141722" stroke="#1E2330" stroke-width="1" />
+        <text x="16" y="26" fill="#10B981" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">ACTION 1 • INSTANT SLACK DISPATCH</text>
+        <text x="16" y="48" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">Notified #rev-alerts with account briefing &amp; deal size ($120k ARR)</text>
+
+        <rect y="80" width="547" height="65" rx="10" fill="#141722" stroke="#1E2330" stroke-width="1" />
+        <text x="16" y="106" fill="#3B82F6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">ACTION 2 • CRM SYNC &amp; DEAL CREATION</text>
+        <text x="16" y="128" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">HubSpot company record upserted, contact staged, AE assigned</text>
+
+        <rect y="160" width="547" height="65" rx="10" fill="#141722" stroke="#1E2330" stroke-width="1" />
+        <text x="16" y="186" fill="#8B5CF6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">ACTION 3 • AI OUTREACH PLAYBOOK</text>
+        <text x="16" y="208" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">Synthesized pain-point talking points based on API telemetry</text>
+      </g>
+    </g>
+  </g>
+</svg>

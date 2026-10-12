@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100">
+  <defs>
+    <radialGradient id="archBgGlow" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#08080C" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#050508" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="nodeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#181A26" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0F111A" stop-opacity="0.98" />
+    </linearGradient>
+    <linearGradient id="connectorGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <marker id="nodeArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3B82F6" />
+    </marker>
+    <marker id="nodeArrowOrange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#F16B0D" />
+    </marker>
+    <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <!-- Deep Technical Substrate Background -->
+  <rect width="1600" height="1100" fill="#07080B" />
+  <rect width="1600" height="1100" fill="url(#archBgGlow)" />
+
+  <!-- Technical Circuit Grid -->
+  <g opacity="0.05" stroke="#FFFFFF" stroke-width="1">
+    <pattern id="archgrid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" />
+      <circle cx="0" cy="0" r="1.5" fill="#3B82F6" />
+    </pattern>
+    <rect width="1600" height="1100" fill="url(#archgrid)" />
+  </g>
+
+  <!-- Top Technical Schematic Header -->
+  <g transform="translate(60, 40)">
+    <rect width="1480" height="48" rx="12" fill="#11131C" stroke="#222638" stroke-width="1" />
+    <circle cx="24" cy="24" r="5" fill="#FF5F56" />
+    <circle cx="42" cy="24" r="5" fill="#FFBD2E" />
+    <circle cx="60" cy="24" r="5" fill="#27C93F" />
+    <text x="88" y="29" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">
+      SYSTEMS SCHEMATIC • Autonomous Revenue Lifecycle Orchestration Flow (RLOE)
+    </text>
+    <rect x="1270" y="11" width="185" height="26" rx="13" fill="#3B82F6" fill-opacity="0.18" stroke="#3B82F6" stroke-width="1" stroke-opacity="0.4" />
+    <circle cx="1285" cy="24" r="4" fill="#3B82F6" />
+    <text x="1298" y="28" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">EVENT-DRIVEN DAG</text>
+  </g>
+
+  <!-- Title & Description Header -->
+  <g transform="translate(60, 115)">
+    <text x="0" y="28" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="800">
+      Revenue Automation Architecture
+    </text>
+    <text x="0" y="56" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="14">
+      End-to-End Inbound Ingestion Pipeline: Validation → Deduplication → Clay Waterfall → Deterministic Gates → LLM Intent → CRM Telemetry
+    </text>
+  </g>
+
+  <!-- Stage Pipeline Grid Layout -->
+
+  <!-- ROW 1 (Stages 1 to 4) -->
+  <!-- NODE 1: Inbound Signals Ingestion -->
+  <g transform="translate(60, 210)" filter="url(#nodeShadow)">
+    <rect width="330" height="230" rx="16" fill="url(#nodeGrad)" stroke="#10B981" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="330" height="38" rx="16" fill="#10B981" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#10B981" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">01 / SIGNAL INGESTION</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">Inbound Signals</text>
+    <text x="18" y="86" fill="#34D399" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Event Stream Listeners</text>
+    <line x1="18" y1="102" x2="312" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Webhook Gatekeeper</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  High-intent website form triggers</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• PLG Product Usage Poller</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Hourly usage tier threshold scan</text>
+  </g>
+
+  <!-- Connector 1 -> 2 -->
+  <path d="M 390 325 L 435 325" stroke="#10B981" stroke-width="2.5" marker-end="url(#nodeArrow)" />
+
+  <!-- NODE 2: Payload Validation & Normalization -->
+  <g transform="translate(435, 210)" filter="url(#nodeShadow)">
+    <rect width="330" height="230" rx="16" fill="url(#nodeGrad)" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="330" height="38" rx="16" fill="#3B82F6" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#3B82F6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">02 / SANITIZATION</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">Payload Validation</text>
+    <text x="18" y="86" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Contract Verification</text>
+    <line x1="18" y1="102" x2="312" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Schema Contract Check</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Rejects malformed JSON payloads</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Apex Domain Extraction</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Normalizes lead emails to corporate domain</text>
+  </g>
+
+  <!-- Connector 2 -> 3 -->
+  <path d="M 765 325 L 810 325" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#nodeArrow)" />
+
+  <!-- NODE 3: Cache / Duplicate Check -->
+  <g transform="translate(810, 210)" filter="url(#nodeShadow)">
+    <rect width="330" height="230" rx="16" fill="url(#nodeGrad)" stroke="#8B5CF6" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="330" height="38" rx="16" fill="#8B5CF6" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#8B5CF6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">03 / COST GATEKEEPER</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">Cache &amp; Dedupe</text>
+    <text x="18" y="86" fill="#A78BFA" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Supabase &amp; Redis Cache</text>
+    <line x1="18" y1="102" x2="312" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Cache-First Query</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Deduplicates leads within TTL window</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Cost-Protection Guard</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Prevents redundant Clay enrichment spend</text>
+  </g>
+
+  <!-- Connector 3 -> 4 -->
+  <path d="M 1140 325 L 1185 325" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#nodeArrow)" />
+
+  <!-- NODE 4: Company Enrichment -->
+  <g transform="translate(1185, 210)" filter="url(#nodeShadow)">
+    <rect width="355" height="230" rx="16" fill="url(#nodeGrad)" stroke="#F59E0B" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="355" height="38" rx="16" fill="#F59E0B" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#F59E0B" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">04 / WATERFALL ENRICHMENT</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">Company Enrichment</text>
+    <text x="18" y="86" fill="#FBBF24" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Clay Multi-Provider Waterfall</text>
+    <line x1="18" y1="102" x2="337" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Firmographic Intelligence</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Headcount, annual revenue &amp; industry</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Tech Stack Fingerprinting</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Detects cloud infra &amp; developer tools</text>
+  </g>
+
+  <!-- Bus Path Down from Row 1 to Row 2 -->
+  <path d="M 1362 440 L 1362 490 L 225 490 L 225 540" stroke="#F16B0D" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#nodeArrowOrange)" />
+
+  <!-- ROW 2 (Stages 5 to 7) -->
+  <!-- NODE 5: Deterministic Pre-Scoring -->
+  <g transform="translate(60, 540)" filter="url(#nodeShadow)">
+    <rect width="435" height="235" rx="16" fill="url(#nodeGrad)" stroke="#EF4444" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="435" height="38" rx="16" fill="#EF4444" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#EF4444" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">05 / DETERMINISTIC PRE-SCORING</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">ICP Rule Matrix</text>
+    <text x="18" y="86" fill="#F87171" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Programmatic Qualification Gate</text>
+    <line x1="18" y1="102" x2="417" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Headcount, Geography &amp; B2B Sector Fit</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Applies zero-cost programmatic filters before LLM invocation</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Automated Low-Touch Out-of-ICP Routing</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Conserves AI inference budget by diverting non-ICP leads to drip</text>
+  </g>
+
+  <!-- Connector 5 -> 6 -->
+  <path d="M 495 658 L 540 658" stroke="#EC4899" stroke-width="2.5" marker-end="url(#nodeArrow)" />
+
+  <!-- NODE 6: AI Scoring & Intent Routing -->
+  <g transform="translate(540, 540)" filter="url(#nodeShadow)">
+    <rect width="455" height="235" rx="16" fill="url(#nodeGrad)" stroke="#EC4899" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="455" height="38" rx="16" fill="#EC4899" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#EC4899" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">06 / AI SCORING &amp; ROUTING</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">LLM Reasoning Stage</text>
+    <text x="18" y="86" fill="#F472B6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Configured Prompt &amp; Routing Engine</text>
+    <line x1="18" y1="102" x2="437" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Intent Analysis &amp; Rep Briefing Generation</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Evaluates buying authority, timeline urgency &amp; product use-case</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Strict JSON Output Schema Contract</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Deterministic fallback if model outputs parsing anomaly</text>
+  </g>
+
+  <!-- Connector 6 -> 7 -->
+  <path d="M 995 658 L 1040 658" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#nodeArrow)" />
+
+  <!-- NODE 7: CRM Sync & Telemetry -->
+  <g transform="translate(1040, 540)" filter="url(#nodeShadow)">
+    <rect width="500" height="235" rx="16" fill="url(#nodeGrad)" stroke="#3B82F6" stroke-width="1.5" stroke-opacity="0.7" />
+    <rect width="500" height="38" rx="16" fill="#3B82F6" fill-opacity="0.12" />
+    <text x="18" y="24" fill="#3B82F6" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800">07 / CRM SYNC &amp; TELEMETRY</text>
+    
+    <text x="18" y="66" fill="#FFFFFF" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">HubSpot Upsert &amp; Audit Log</text>
+    <text x="18" y="86" fill="#60A5FA" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">Bi-Directional CRM Synchronization</text>
+    <line x1="18" y1="102" x2="482" y2="102" stroke="#222638" stroke-width="1" />
+
+    <text x="18" y="126" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• HubSpot Contact &amp; Deal Record Creation</text>
+    <text x="18" y="146" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Assigns account executive, sets tier score, dispatches Slack alert</text>
+
+    <text x="18" y="174" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12">• Supabase inbound_intent_log &amp; Telemetry</text>
+    <text x="18" y="194" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="11.5">  Full latency telemetry, dead-letter monitoring, execution health</text>
+  </g>
+
+  <!-- Technical Legend Bar -->
+  <g transform="translate(60, 830)">
+    <rect width="1480" height="56" rx="14" fill="#11131C" stroke="#222638" stroke-width="1" />
+    
+    <g transform="translate(30, 20)">
+      <circle cx="8" cy="8" r="5" fill="#10B981" />
+      <text x="22" y="12" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Deterministic Gates</text>
+    </g>
+
+    <g transform="translate(260, 20)">
+      <circle cx="8" cy="8" r="5" fill="#8B5CF6" />
+      <text x="22" y="12" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Cache-First TTL</text>
+    </g>
+
+    <g transform="translate(480, 20)">
+      <circle cx="8" cy="8" r="5" fill="#F59E0B" />
+      <text x="22" y="12" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Clay Waterfall</text>
+    </g>
+
+    <g transform="translate(700, 20)">
+      <circle cx="8" cy="8" r="5" fill="#EC4899" />
+      <text x="22" y="12" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">LLM Prompt Stage</text>
+    </g>
+
+    <g transform="translate(930, 20)">
+      <circle cx="8" cy="8" r="5" fill="#3B82F6" />
+      <text x="22" y="12" fill="#E2E8F0" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">HubSpot + Supabase</text>
+    </g>
+
+    <g transform="translate(1220, 20)">
+      <text x="0" y="12" fill="#64748B" font-family="Inter, system-ui, sans-serif" font-size="12">
+        Yatin Joshi • Systems Architecture
+      </text>
+    </g>
+  </g>
+</svg>
