@@ -208,7 +208,7 @@ export default function Hero() {
       {/* Sticky Hero Container */}
       <div
         ref={containerRef}
-        className="w-screen h-screen sticky top-0 flex justify-between items-center hero-container px-[4vw] z-2 max-[1025px]:px-[5vw] max-[1025px]:items-start max-[1025px]:pt-[30vw] overflow-hidden will-change-transform"
+        className="w-screen h-screen sticky top-0 flex justify-between items-center hero-container px-[4vw] z-2 max-[1023px]:px-[5vw] max-[1023px]:items-start max-[1023px]:pt-[30vw] overflow-hidden will-change-transform"
         style={{
           backgroundColor: '#180d08',
           backgroundImage: `
@@ -221,16 +221,16 @@ export default function Hero() {
       >
         <div
           ref={textContainerRef}
-          className="w-full h-fit flex justify-between max-[1025px]:flex-col max-[1025px]:gap-8 pointer-events-none will-change-transform"
+          className="w-full h-fit flex justify-between max-[1023px]:flex-col max-[1023px]:gap-8 pointer-events-none will-change-transform"
         >
-          <div className="relative z-1 w-[40%] max-[1025px]:w-[65%] max-md:w-full pointer-events-auto">
+          <div className="relative z-1 w-[40%] max-[1023px]:w-[65%] max-md:w-full pointer-events-auto">
             <SplitText animateOnScroll={false} start={headlineStart} stagger={0.015}>
-              <h1 className="text-[5.2vw] text-white max-[1025px]:text-[8.5vw] max-md:text-[11vw] leading-[1.08]! font-normal">
+              <h1 className="text-[5.2vw] text-white max-[1023px]:text-[8.5vw] max-md:text-[11vw] leading-[1.08]! font-normal">
                 I Build<br />AI-Powered<br />Revenue<br />Systems
               </h1>
             </SplitText>
           </div>
-          <div className="relative z-10 w-[12%] flex flex-col justify-between text-end text-[1.25vw] leading-[1.15] py-[2vw] max-[1025px]:w-[40%] max-[1025px]:text-[3.5vw] max-[1025px]:text-start max-[1025px]:flex-col-reverse max-md:text-[4.5vw] max-md:gap-[7vw] max-[1025px]:gap-20 max-md:py-0 pointer-events-auto">
+          <div className="relative z-10 w-[12%] flex flex-col justify-between text-end text-[1.25vw] leading-[1.15] py-[2vw] max-[1023px]:w-[40%] max-[1023px]:text-[3.5vw] max-[1023px]:text-start max-[1023px]:flex-col-reverse max-md:text-[4.5vw] max-md:gap-[7vw] max-[1023px]:gap-20 max-md:py-0 pointer-events-auto">
             <SplitText animateOnScroll={false} start={subtextStart}>
               <p className="text-white">AI • AUTOMATION • GTM</p>
             </SplitText>
@@ -243,7 +243,7 @@ export default function Hero() {
         {/* Hero Character Image */}
         <div
           ref={heroAvRef}
-          className="absolute z-2 bottom-[-64%] left-1/2 translate-x-[-49.5%] size-[180%] max-[1025px]:w-full max-[1025px]:translate-x-[-40%] max-md:w-[160%] max-md:top-auto max-md:bottom-[-30%] max-md:h-auto max-md:translate-x-[-40%] hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none"
+          className="absolute z-2 bottom-[-64%] left-1/2 translate-x-[-49.5%] size-[180%] max-[1023px]:w-full max-[1023px]:translate-x-[-49.5%] max-md:w-[160%] max-md:top-auto max-md:bottom-[-30%] max-md:h-auto max-md:translate-x-[-50%] hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none"
         >
           <div ref={heroImgInnerRef} className="w-full h-full will-change-transform">
             <img
