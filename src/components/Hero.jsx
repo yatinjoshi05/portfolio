@@ -243,16 +243,16 @@ export default function Hero() {
         {/* Hero Character Image */}
         <div
           ref={heroAvRef}
-          className="absolute z-2 bottom-[-64%] left-1/2 translate-x-[-49.5%] size-[180%] max-[1025px]:w-full max-[1025px]:translate-x-[-40%] max-md:w-[160%] max-md:top-auto max-md:bottom-[-30%] max-md:h-auto max-md:translate-x-[-40%] hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none"
+          className="absolute z-2 bottom-0 left-1/2 -translate-x-1/2 h-[80vh] max-h-[720px] w-auto max-[1025px]:h-[56vh] max-md:h-[46vh] max-md:bottom-0 hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none flex items-end justify-center"
         >
-          <div ref={heroImgInnerRef} className="w-full h-full will-change-transform">
+          <div ref={heroImgInnerRef} className="h-full w-auto will-change-transform flex items-end">
             <img
-              alt="hero-img"
+              alt="Yatin Joshi — Entry-Level GTM Engineer"
               draggable="false"
               loading="eager"
-              width="1142"
-              height="1378"
-              className="w-full h-full object-contain select-none pointer-events-none"
+              width="1024"
+              height="946"
+              className="h-full w-auto max-w-none object-contain object-bottom select-none pointer-events-none"
               style={{ color: 'transparent' }}
               src="/images/yatin-joshi-professional.webp"
             />
