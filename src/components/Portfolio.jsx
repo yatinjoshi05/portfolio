@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { Maximize2, X, CheckCircle2, Github, ExternalLink } from 'lucide-react';
 import SplitText from './SplitText';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,12 +13,13 @@ const projects = [
     shortName: 'Revenue Lifecycle Orchestration',
     subtitle: 'Event-Driven GTM Automation  •  n8n',
     description:
-      'An event-driven GTM automation system that combines intent ingestion, cache-first deduplication, enrichment, deterministic qualification, AI-assisted routing, CRM synchronization, and telemetry.',
+      'An event-driven GTM automation workflow template combining intent ingestion, cache-first deduplication, Clay waterfall enrichment, deterministic scoring, and gated Claude routing.',
     imgSrc: '/media/projects/rloe-workflow.webp',
     highResSrc: '/media/projects/rloe-workflow.webp',
-    badge: 'Production Engine',
+    badge: 'Workflow Template',
     badgeColor: '#10B981',
     windowLabel: 'n8n Workflow • RLOE Canvas',
+    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
     tags: ['n8n Event Stream', 'Supabase Cache', 'Clay Waterfall', 'HubSpot Sync']
   },
   {
@@ -27,27 +28,29 @@ const projects = [
     shortName: 'GTM Account Intelligence',
     subtitle: 'CRM Coverage  •  Pipeline Visibility',
     description:
-      'A CRM interface for account coverage, pipeline visibility, relationship health, and operational gaps, designed to work alongside the RLOE automation system.',
+      'A CRM interface for account coverage, pipeline visibility, relationship health, and operational triage, operating alongside the RLOE automation engine.',
     imgSrc: '/media/projects/gtm-crm-dashboard.webp',
     highResSrc: '/media/projects/gtm-crm-dashboard.webp',
     badge: 'CRM Interface',
     badgeColor: '#3B82F6',
     windowLabel: 'GTM CRM • Accounts Health',
+    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
     tags: ['Account Coverage', 'Pipeline Health Audit', 'Operational Gaps']
   },
   {
     id: 'jarvis-os',
     name: 'JARVIS OS — Personal AI Operating System',
     shortName: 'JARVIS OS — AI System',
-    subtitle: 'AI Agent Workspaces  •  HUD Interface',
+    subtitle: 'Desktop Assistant  •  HUD Interface',
     description:
-      'A personal AI operating-system concept combining an assistant interface, quick actions, workspace organization, memory, coding tools, and task management.',
+      'A personal AI desktop assistant and operating environment combining an assistant HUD, 3D Quantum Globe interface, associative memory engine, and media studio (In Progress).',
     imgSrc: '/media/projects/jarvis-os.webp',
     highResSrc: '/media/projects/jarvis-os.webp',
-    badge: 'AI System Concept',
+    badge: 'In Progress • WIP',
     badgeColor: '#EC4899',
     windowLabel: 'JARVIS OS v1.0.0 • Command HUD',
-    tags: ['Agent Interface', 'Particle HUD', 'Memory & Coding Tools']
+    repoUrl: 'https://github.com/yatinjoshi05/jarvis-os',
+    tags: ['Tauri Shell', '3D Quantum Globe', 'Memory & Coding Tools']
   },
   {
     id: 'rloe-architecture',
@@ -61,6 +64,7 @@ const projects = [
     badge: 'System Architecture',
     badgeColor: '#F59E0B',
     windowLabel: 'RLOE Architecture • 8-Stage Pipeline',
+    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
     tags: ['Signal Ingestion', 'Cache-First Dedupe', 'Deterministic Gate', 'Telemetry']
   }
 ];
@@ -340,6 +344,19 @@ export default function Portfolio() {
                     >
                       {p.badge}
                     </span>
+                    {p.repoUrl && (
+                      <a
+                        href={p.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`View ${p.name} on GitHub`}
+                        className="flex items-center gap-1 text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] px-2 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
+                      >
+                        <Github className="w-3 h-3 max-md:w-3.5 max-md:h-3.5" />
+                        <span className="max-md:hidden">GitHub</span>
+                      </a>
+                    )}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -461,9 +478,23 @@ export default function Portfolio() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-1.5 text-white/50 text-xs">
-                <span>Production Architecture</span>
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="flex items-center gap-2">
+                {modalProject.repoUrl && (
+                  <a
+                    href={modalProject.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono transition-colors"
+                  >
+                    <Github className="w-3.5 h-3.5" />
+                    <span>GitHub Repo</span>
+                    <ExternalLink className="w-3 h-3 text-white/60 ml-0.5" />
+                  </a>
+                )}
+                <div className="flex items-center gap-1.5 text-white/50 text-xs">
+                  <span>Architecture</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                </div>
               </div>
             </div>
           </div>
