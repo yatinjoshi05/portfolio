@@ -13,7 +13,7 @@ const projects = [
     shortName: 'Revenue Lifecycle Orchestration',
     subtitle: 'Event-Driven GTM Automation  •  n8n',
     description:
-      'An event-driven GTM automation workflow template combining intent ingestion, cache-first deduplication, Clay waterfall enrichment, deterministic scoring, and gated Claude routing.',
+      'An event-driven GTM automation workflow template combining intent ingestion, cache-first deduplication, Clay waterfall enrichment, deterministic scoring, and gated Claude routing (requires importing into n8n and configuring external integrations).',
     imgSrc: '/media/projects/rloe-workflow.webp',
     highResSrc: '/media/projects/rloe-workflow.webp',
     badge: 'Workflow Template',
@@ -28,13 +28,14 @@ const projects = [
     shortName: 'GTM Account Intelligence',
     subtitle: 'CRM Coverage  •  Pipeline Visibility',
     description:
-      'A CRM interface for account coverage, pipeline visibility, relationship health, and operational triage, operating alongside the RLOE automation engine.',
+      'A live React/Vite dashboard demo for account coverage, pipeline health, relationship intelligence, and triage, operating alongside the RLOE automation engine.',
     imgSrc: '/media/projects/gtm-crm-dashboard.webp',
     highResSrc: '/media/projects/gtm-crm-dashboard.webp',
-    badge: 'CRM Interface',
+    badge: 'Dashboard Demo',
     badgeColor: '#3B82F6',
     windowLabel: 'GTM CRM • Accounts Health',
     repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
+    liveUrl: 'https://yatinjoshi05.github.io/revenue-lifecycle-orchestration-engine/',
     tags: ['Account Coverage', 'Pipeline Health Audit', 'Operational Gaps']
   },
   {
@@ -43,13 +44,14 @@ const projects = [
     shortName: 'JARVIS OS — AI System',
     subtitle: 'Desktop Assistant  •  HUD Interface',
     description:
-      'A personal AI desktop assistant and operating environment combining an assistant HUD, 3D Quantum Globe interface, associative memory engine, and media studio (In Progress).',
+      'A personal AI desktop assistant and operating environment combining an assistant HUD, 3D Quantum Globe interface, associative memory engine, and media studio (In Progress web preview; native desktop OS features and terminal execution require the Windows Tauri desktop runtime).',
     imgSrc: '/media/projects/jarvis-os.webp',
     highResSrc: '/media/projects/jarvis-os.webp',
-    badge: 'In Progress • WIP',
+    badge: 'In Progress • Web Preview',
     badgeColor: '#EC4899',
     windowLabel: 'JARVIS OS v1.0.0 • Command HUD',
     repoUrl: 'https://github.com/yatinjoshi05/jarvis-os',
+    liveUrl: 'https://yatinjoshi05.github.io/jarvis-os/',
     tags: ['Tauri Shell', '3D Quantum Globe', 'Memory & Coding Tools']
   },
   {
@@ -357,6 +359,19 @@ export default function Portfolio() {
                         <span className="max-md:hidden">GitHub</span>
                       </a>
                     )}
+                    {p.liveUrl && (
+                      <a
+                        href={p.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Open live demo for ${p.name}`}
+                        className="flex items-center gap-1 text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] px-2 py-1 rounded-md bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 transition-colors cursor-pointer shrink-0"
+                      >
+                        <ExternalLink className="w-3 h-3 max-md:w-3.5 max-md:h-3.5" />
+                        <span className="max-md:hidden">Live Demo</span>
+                      </a>
+                    )}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -479,6 +494,17 @@ export default function Portfolio() {
               </div>
 
               <div className="flex items-center gap-2">
+                {modalProject.liveUrl && (
+                  <a
+                    href={modalProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-mono transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Live Demo</span>
+                  </a>
+                )}
                 {modalProject.repoUrl && (
                   <a
                     href={modalProject.repoUrl}
