@@ -26,6 +26,7 @@ dist/
 !package.json
 !package-lock.json
 !vite.config.js
+!vercel.json
 /downloaded/
 /github_profile_repo/
 /scripts/

@@ -155,29 +155,8 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="flex justify-between py-8 pt-12 text-lg text-white/70 max-md:flex-col max-md:gap-2 max-md:text-sm max-md:text-center max-md:py-6 max-md:pt-8">
-          <p>
-            Copyright{' '}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://vault.hyperiux.com/"
-              className="hover:text-white"
-            >
-              ©
-            </a>{' '}
-            Elena Voss Design 2026
-          </p>
-          <p>
-            By:{' '}
-            <a
-              href="https://www.hyperiux.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white"
-            >
-              Hyperiux
-            </a>
-          </p>
+          <p>© 2026 Yatin Joshi. All rights reserved.</p>
+          <p className="text-white/50 text-sm">GTM Engineering • Revenue Automation • AI Workflows</p>
         </div>
       </div>
     </footer>
