@@ -11,14 +11,23 @@
 
 This audit was conducted to diagnose, eliminate, and verify the issue where visitors clicking the portfolio link (particularly from LinkedIn) were prompted with a **Vercel Login screen** rather than landing directly on the public portfolio.
 
-### Root Cause Analysis
+### Root Cause Analysis & Screenshot Evidence
 
-1. **Vercel Preview vs. Production URL Divergence:**
-   Vercel enforces **Deployment Protection (Vercel Authentication)** by default on all preview deployments, branch deployments (`portfolio-git-main-*.vercel.app`), and dashboard preview URLs. If a link shared on LinkedIn or other public documents was copied from a Vercel deployment preview card, a git branch preview, or the Vercel project management dashboard (`vercel.com/...`), external anonymous visitors (recruiters, hiring managers) are intercepted by Vercel's OAuth/SSO login wall (`https://vercel.com/login?next=...`).
+1. **Direct Inspection of User Screenshots (`Screenshot 2026-10-14 135935.png` & `140006.png`):**
+   - **Screenshot 1 (`135935.png`)**: Shows the user's active LinkedIn profile under the **Featured** section.
+     - Card Title: `Personal Portfolio | GTM Engineering & AI ...`
+     - Card Subtitle / Destination URL: **`https://vercel.com/login`**
+     - Card Thumbnail: A black box with the Vercel triangle icon and the text "Dashboard".
+     - **Finding:** The URL saved inside LinkedIn for this card was literally entered as `https://vercel.com/login` rather than the live website URL `https://portfolio-yatin-portfolio1.vercel.app/`.
+   - **Screenshot 2 (`140006.png`)**: Shows what happens when clicking that Featured card. The browser opens a new tab at `https://vercel.com/login` displaying "Log in to Vercel" with email/OAuth login buttons.
+   - **Conclusion:** The issue is **NOT** a broken website build, code redirect, or Vercel server defect. The website itself is 100% public. The issue is simply that the LinkedIn Featured card was configured with `https://vercel.com/login` as its link destination.
+
 2. **Canonical Production Domain Behavior:**
    The assigned production domain `https://portfolio-yatin-portfolio1.vercel.app/` was tested across multiple unauthenticated incognito headless Chrome instances and HTTP header inspectors. In an unauthenticated session, the production domain returns **HTTP 200 OK** and renders the full portfolio application without requiring any Vercel credentials.
+
 3. **Repository SEO & Metadata Gaps:**
    The repository previously lacked canonical URL tags, `robots.txt`, and `sitemap.xml`, and still retained template Open Graph / Twitter metadata referencing "Elena Voss" and template descriptions. When LinkedIn's crawler unfurls a URL, clean canonical and Open Graph metadata is mandatory to generate the correct preview snippet and avoid fallback redirects.
+
 4. **Template Artifacts in Footer:**
    The footer contained legacy links pointing to `vault.hyperiux.com` and `hyperiux.com` under "Elena Voss Design 2026", which have now been sanitized and branded exclusively for Yatin Joshi.
 
