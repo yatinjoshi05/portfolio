@@ -8,6 +8,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
+    id: 'content-automation-platform',
+    name: 'Content Automation Platform',
+    shortName: 'Content Automation Engine',
+    subtitle: 'Autonomous Media Pipeline  •  n8n & PostgreSQL',
+    description:
+      'An enterprise short-form video generation, QA, and distribution platform orchestrating 16 decoupled n8n state machines, CoreUI React operations dashboard, PostgreSQL state engine, and fail-closed model circuit breakers.',
+    imgSrc: '/media/projects/content-automation-dashboard.png',
+    highResSrc: '/media/projects/content-automation-dashboard.png',
+    badge: 'Production Engine',
+    badgeColor: '#8B5CF6',
+    windowLabel: 'Content Automation • Control Center',
+    repoUrl: 'https://github.com/yatinjoshi05/content-automation-platform',
+    tags: ['16 n8n Workflows', 'PostgreSQL 16 Engine', 'CoreUI Dashboard', 'FFmpeg QA']
+  },
+  {
     id: 'rloe-engine',
     name: 'Revenue Lifecycle Orchestration Engine',
     shortName: 'Revenue Lifecycle Orchestration',
@@ -242,7 +257,7 @@ export default function Portfolio() {
   return (
     <section
       className="relative w-screen text-white pt-[6vw] max-[1025px]:pt-[24vw]"
-      style={{ height: '360vh' }}
+      style={{ height: '450vh' }}
       id="portfolio"
       aria-label="Systems I've Built Portfolio Section"
     >
@@ -273,11 +288,11 @@ export default function Portfolio() {
           {/* Left Column: Timeline items */}
           <div className="w-[32%] relative max-md:w-full max-[1025px]:w-full">
             {/* Background line */}
-            <div className="absolute left-1 bg-white/20 top-[2.5vw] max-[1025px]:top-[1vw] h-[21vw] max-[1025px]:h-[30vw] max-md:h-[46vw] w-px" />
+            <div className="absolute left-1 bg-white/20 top-[2.5vw] max-[1025px]:top-[1vw] h-[27vw] max-[1025px]:h-[38vw] max-md:h-[58vw] w-px" />
             {/* Progress line */}
             <div
               ref={progressLineRef}
-              className="absolute left-1 bg-white origin-top top-[2.5vw] max-[1025px]:top-[1vw] h-[21vw] max-[1025px]:h-[30vw] max-md:h-[46vw] w-px"
+              className="absolute left-1 bg-white origin-top top-[2.5vw] max-[1025px]:top-[1vw] h-[27vw] max-[1025px]:h-[38vw] max-md:h-[58vw] w-px"
             />
 
             {/* Timeline List */}

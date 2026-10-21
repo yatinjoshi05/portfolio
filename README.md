@@ -19,6 +19,7 @@ Built with **React 19**, **Vite**, **Tailwind CSS**, and **GSAP ScrollTrigger**,
 
 | Project | Role / Type | Live Demo / Preview | Source Repository |
 | :--- | :--- | :--- | :--- |
+| **Content Automation Platform** | Autonomous Media Pipeline (16 n8n Workflows, PostgreSQL 16, CoreUI) | Operations Dashboard | [GitHub Repo](https://github.com/yatinjoshi05/content-automation-platform) |
 | **Revenue Lifecycle Orchestration Engine (RLOE)** | Event-Driven Workflow Architecture (n8n, Supabase, Clay, LLM) | Canvas Workflow Template | [GitHub Repo](https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine) |
 | **GTM Account Intelligence Dashboard** | CRM Account Coverage & Health Board (React, Vite) | [Live Demo](https://yatinjoshi05.github.io/revenue-lifecycle-orchestration-engine/) | [GitHub Repo](https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine) |
 | **JARVIS OS — Personal AI Operating System** | Desktop Assistant Prototype (React, TypeScript, Tauri, Express) | [Web Preview](https://yatinjoshi05.github.io/jarvis-os/) | [GitHub Repo](https://github.com/yatinjoshi05/jarvis-os) |
