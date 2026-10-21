@@ -254,7 +254,7 @@ export default function Hero() {
               height="1378"
               className="w-full h-full object-contain select-none pointer-events-none"
               style={{ color: 'transparent' }}
-              src="/images/yatin-joshi-professional.webp"
+              src="/images/yatin-joshi-retouched.webp"
             />
           </div>
         </div>
