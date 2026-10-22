@@ -250,11 +250,11 @@ export default function Hero() {
               alt="hero-img"
               draggable="false"
               loading="eager"
-              width="1142"
-              height="1378"
+              width="849"
+              height="1024"
               className="w-full h-full object-contain select-none pointer-events-none"
               style={{ color: 'transparent' }}
-              src="/images/yatin-joshi-retouched.webp"
+              src="/images/yatin-joshi-hero-transparent.png"
             />
           </div>
         </div>
