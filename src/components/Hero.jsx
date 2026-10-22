@@ -46,6 +46,12 @@ export default function Hero() {
           if (heroAv) {
             heroAv.style.setProperty('--reveal', `${revealState.reveal}%`);
           }
+        },
+        onComplete: () => {
+          if (heroAv) {
+            heroAv.style.maskImage = 'none';
+            heroAv.style.webkitMaskImage = 'none';
+          }
         }
       },
       0
@@ -243,7 +249,7 @@ export default function Hero() {
         {/* Hero Character Image */}
         <div
           ref={heroAvRef}
-          className="absolute z-2 bottom-[-64%] left-1/2 translate-x-[-49.5%] size-[180%] max-[1023px]:w-full max-[1023px]:translate-x-[-49.5%] max-md:w-[160%] max-md:top-auto max-md:bottom-[-30%] max-md:h-auto max-md:translate-x-[-50%] hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none"
+          className="absolute z-2 bottom-[-40%] left-1/2 translate-x-[-49.5%] w-[150%] h-[150%] max-[1023px]:w-full max-[1023px]:h-full max-[1023px]:bottom-[-20%] max-[1023px]:translate-x-[-49.5%] max-md:w-[160%] max-md:top-auto max-md:bottom-[-30%] max-md:h-auto max-md:translate-x-[-50%] hero-av-img hero-mask-reveal opacity-0 will-change-transform pointer-events-none"
         >
           <div ref={heroImgInnerRef} className="w-full h-full will-change-transform">
             <img
@@ -253,7 +259,7 @@ export default function Hero() {
               width="849"
               height="1024"
               className="w-full h-full object-contain select-none pointer-events-none"
-              style={{ color: 'transparent' }}
+              style={{ color: 'transparent', imageRendering: 'high-quality' }}
               src="/images/yatin-joshi-hero-transparent.png"
             />
           </div>
