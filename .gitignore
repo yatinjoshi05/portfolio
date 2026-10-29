@@ -11,8 +11,16 @@ dist/
 
 # Editor & Agent temporary files
 .agent/
+.agents/
 .uix/
 *.log
+*.backup
+**/*.backup
+/audit-reports/
+/HERO_PORTRAIT_LOCKED_SPECIFICATION.md
+/AGENTS.md
+public/images/yatin-joshi-portfolio-final.png
+public/images/yatin-joshi-portfolio-transparent.png
 
 # Root-level audit and scratch screenshots
 /*.png
@@ -34,3 +42,8 @@ dist/
 # Do NOT ignore images in public or src
 !public/**
 !src/**
+
+# Exclude unneeded assets and backups in public/ and src/
+public/images/yatin-joshi-portfolio-final.png
+public/images/yatin-joshi-portfolio-transparent.png
+**/*.backup

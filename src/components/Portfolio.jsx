@@ -1,90 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Maximize2, X, CheckCircle2, Github, ExternalLink } from 'lucide-react';
+import {
+  Maximize2,
+  X,
+  CheckCircle2,
+  Github,
+  ExternalLink,
+  Layers,
+  ArrowRight,
+  ShieldCheck,
+  Cpu
+} from 'lucide-react';
 import SplitText from './SplitText';
+import { projectsData } from '../data/projectsData';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    id: 'content-automation-platform',
-    name: 'Content Automation Platform',
-    shortName: 'Content Automation Engine',
-    subtitle: 'Autonomous Media Pipeline  •  n8n & PostgreSQL',
-    description:
-      'An enterprise short-form video generation, QA, and distribution platform orchestrating 16 decoupled n8n state machines, CoreUI React operations dashboard, PostgreSQL state engine, and fail-closed model circuit breakers.',
-    imgSrc: '/media/projects/content-automation-dashboard.png',
-    highResSrc: '/media/projects/content-automation-dashboard.png',
-    badge: 'Production Engine',
-    badgeColor: '#8B5CF6',
-    windowLabel: 'Content Automation • Control Center',
-    repoUrl: 'https://github.com/yatinjoshi05/content-automation-platform',
-    tags: ['16 n8n Workflows', 'PostgreSQL 16 Engine', 'CoreUI Dashboard', 'FFmpeg QA']
-  },
-  {
-    id: 'rloe-engine',
-    name: 'Revenue Lifecycle Orchestration Engine',
-    shortName: 'Revenue Lifecycle Orchestration',
-    subtitle: 'Event-Driven GTM Automation  •  n8n',
-    description:
-      'An event-driven GTM automation workflow template combining intent ingestion, cache-first deduplication, Clay waterfall enrichment, deterministic scoring, and gated Claude routing (requires importing into n8n and configuring external integrations).',
-    imgSrc: '/media/projects/rloe-workflow.webp',
-    highResSrc: '/media/projects/rloe-workflow.webp',
-    badge: 'Workflow Template',
-    badgeColor: '#10B981',
-    windowLabel: 'n8n Workflow • RLOE Canvas',
-    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
-    tags: ['n8n Event Stream', 'Supabase Cache', 'Clay Waterfall', 'HubSpot Sync']
-  },
-  {
-    id: 'gtm-dashboard',
-    name: 'GTM Account Intelligence Dashboard',
-    shortName: 'GTM Account Intelligence',
-    subtitle: 'CRM Coverage  •  Pipeline Visibility',
-    description:
-      'A live React/Vite dashboard demo for account coverage, pipeline health, relationship intelligence, and triage, operating alongside the RLOE automation engine.',
-    imgSrc: '/media/projects/gtm-crm-dashboard.webp',
-    highResSrc: '/media/projects/gtm-crm-dashboard.webp',
-    badge: 'Dashboard Demo',
-    badgeColor: '#3B82F6',
-    windowLabel: 'GTM CRM • Accounts Health',
-    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
-    liveUrl: 'https://yatinjoshi05.github.io/revenue-lifecycle-orchestration-engine/',
-    tags: ['Account Coverage', 'Pipeline Health Audit', 'Operational Gaps']
-  },
-  {
-    id: 'jarvis-os',
-    name: 'JARVIS OS — Personal AI Operating System',
-    shortName: 'JARVIS OS — AI System',
-    subtitle: 'Desktop Assistant  •  HUD Interface',
-    description:
-      'A personal AI desktop assistant and operating environment combining an assistant HUD, 3D Quantum Globe interface, associative memory engine, and media studio (In Progress web preview; native desktop OS features and terminal execution require the Windows Tauri desktop runtime).',
-    imgSrc: '/media/projects/jarvis-os.webp',
-    highResSrc: '/media/projects/jarvis-os.webp',
-    badge: 'In Progress • Web Preview',
-    badgeColor: '#EC4899',
-    windowLabel: 'JARVIS OS v1.0.0 • Command HUD',
-    repoUrl: 'https://github.com/yatinjoshi05/jarvis-os',
-    liveUrl: 'https://yatinjoshi05.github.io/jarvis-os/',
-    tags: ['Tauri Shell', '3D Quantum Globe', 'Memory & Coding Tools']
-  },
-  {
-    id: 'rloe-architecture',
-    name: 'RLOE — End-to-End Revenue Architecture',
-    shortName: 'RLOE Architecture Flow',
-    subtitle: 'System Architecture  •  Data Flow',
-    description:
-      'An architecture overview of how inbound intent signals move through deduplication, enrichment, qualification, AI-assisted routing, CRM actions, and operational telemetry.',
-    imgSrc: '/media/projects/rloe-architecture.webp',
-    highResSrc: '/media/projects/rloe-architecture.svg',
-    badge: 'System Architecture',
-    badgeColor: '#F59E0B',
-    windowLabel: 'RLOE Architecture • 8-Stage Pipeline',
-    repoUrl: 'https://github.com/yatinjoshi05/revenue-lifecycle-orchestration-engine',
-    tags: ['Signal Ingestion', 'Cache-First Dedupe', 'Deterministic Gate', 'Telemetry']
-  }
-];
 
 export default function Portfolio() {
   const dotsRef = useRef([]);
@@ -93,14 +24,18 @@ export default function Portfolio() {
   const circleClipRef = useRef(null);
   const tlRef = useRef(null);
   const textItemsRef = useRef([]);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [modalProject, setModalProject] = useState(null);
 
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [selectedMedia, setSelectedMedia] = useState({});
+  const [modalProject, setModalProject] = useState(null);
+  const [modalMediaIdx, setModalMediaIdx] = useState(0);
+
+  // GSAP ScrollTrigger Pinned Timeline & Circle Mask Setup
   useEffect(() => {
     const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const totalSteps = projects.length - 1;
+    const totalSteps = projectsData.length - 1;
 
-    // Circle clip entrance
+    // Circle clip mask entrance animation
     if (!isReduced) {
       if (window.innerWidth > 1024) {
         gsap.to('.circle-clip', {
@@ -143,7 +78,7 @@ export default function Portfolio() {
       }
     }
 
-    // Main portfolio pinned timeline
+    // Main pinned portfolio scroll timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#portfolio',
@@ -171,7 +106,7 @@ export default function Portfolio() {
     });
     tlRef.current = tl;
 
-    // Initial states
+    // Initial styles
     if (progressLineRef.current) {
       gsap.set(progressLineRef.current, { scaleY: 0 });
     }
@@ -187,7 +122,7 @@ export default function Portfolio() {
       gsap.set(textItemsRef.current[0], { opacity: 1 });
     }
     textItemsRef.current.slice(1).forEach((item) => {
-      if (item) gsap.set(item, { opacity: 0.5 });
+      if (item) gsap.set(item, { opacity: 0.45 });
     });
 
     if (cardsRef.current.length) {
@@ -197,12 +132,12 @@ export default function Portfolio() {
       });
     }
 
-    // Line fills
+    // Progress line fills progressively
     if (progressLineRef.current) {
       tl.to(progressLineRef.current, { scaleY: 1, ease: 'none', duration: totalSteps }, 0);
     }
 
-    // Steps
+    // Card slide-up and dimming choreography
     for (let i = 0; i < totalSteps; i++) {
       if (cardsRef.current[i + 1]) {
         if (isReduced) {
@@ -215,13 +150,17 @@ export default function Portfolio() {
         tl.to(cardsRef.current[i], { filter: 'brightness(0.2)', ease: 'power2.inOut', duration: 1 }, i);
       }
       if (textItemsRef.current[i]) {
-        tl.to(textItemsRef.current[i], { opacity: 0.5, ease: 'power2.inOut', duration: 0.5 }, i);
+        tl.to(textItemsRef.current[i], { opacity: 0.45, ease: 'power2.inOut', duration: 0.5 }, i);
       }
       if (textItemsRef.current[i + 1]) {
         tl.to(textItemsRef.current[i + 1], { opacity: 1, ease: 'power2.inOut', duration: 0.5 }, i + 0.5);
       }
       if (dotsRef.current[i]) {
-        tl.to(dotsRef.current[i], { scale: 1, backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(255,255,255,0.7)', duration: 0.3 }, i + 0.5);
+        tl.to(
+          dotsRef.current[i],
+          { scale: 1, backgroundColor: 'rgba(255,255,255,0.6)', borderColor: 'rgba(255,255,255,0.6)', duration: 0.3 },
+          i + 0.5
+        );
       }
       if (dotsRef.current[i + 1]) {
         tl.set(dotsRef.current[i + 1], { backgroundColor: '#ffffff', borderColor: '#ffffff', scale: 1.25 }, i + 1);
@@ -248,16 +187,29 @@ export default function Portfolio() {
   const scrollToProject = (idx) => {
     const st = tlRef.current?.scrollTrigger;
     if (st) {
-      const totalSteps = projects.length - 1;
+      const totalSteps = projectsData.length - 1;
       const target = st.start + (st.end - st.start) * (idx / totalSteps);
       window.__lenis?.scrollTo(target, { duration: 0.8 });
     }
   };
 
+  const handleSelectMedia = (projectId, mediaIdx, e) => {
+    e?.stopPropagation();
+    setSelectedMedia((prev) => ({
+      ...prev,
+      [projectId]: mediaIdx
+    }));
+  };
+
+  const openModal = (project, mediaIdx = 0) => {
+    setModalProject(project);
+    setModalMediaIdx(mediaIdx);
+  };
+
   return (
     <section
       className="relative w-screen text-white pt-[6vw] max-[1025px]:pt-[24vw]"
-      style={{ height: '450vh' }}
+      style={{ height: '400vh' }}
       id="portfolio"
       aria-label="Systems I've Built Portfolio Section"
     >
@@ -268,163 +220,250 @@ export default function Portfolio() {
       />
 
       {/* Sticky Main Viewport */}
-      <div className="w-screen h-screen sticky top-0 z-3 flex flex-col items-center justify-center px-[4vw] gap-[2.5vw] overflow-hidden bg-linear-to-r from-[#F16B0D] to-[#E61416] max-md:gap-[4vw] max-[1025px]:gap-6 max-[1025px]:px-[5vw]">
-        
+      <div className="w-screen h-screen sticky top-0 z-3 flex flex-col items-center justify-center px-[4vw] gap-4 overflow-hidden bg-linear-to-r from-[#F16B0D] to-[#E61416]">
         {/* Section Heading & Subtitle */}
-        <div className="flex flex-col items-center text-center max-w-[85vw]">
+        <div className="portfolio-header-container">
           <SplitText>
-            <h2 className="text-[4.8vw] text-center max-[1025px]:text-[6.2vw] max-md:text-[8vw] font-normal tracking-tight">
+            <h2 className="portfolio-header-title">
               Systems I’ve Built
             </h2>
           </SplitText>
-          <p className="text-[1.05vw] max-[1025px]:text-[2vw] max-md:text-[3vw] text-white/90 font-light mt-1 max-w-[56vw] max-[1025px]:max-w-[85vw] leading-relaxed">
-            Production software, event-driven automation, and AI systems engineered for verifiable scale and operational clarity.
+          <p className="portfolio-header-sub">
+            Autonomous revenue intelligence, event-driven GTM workflows, and AI desktop architecture engineered for verifiable scale and operational clarity.
           </p>
         </div>
 
         {/* Showcase Columns */}
-        <div className="w-full flex items-center gap-[4vw] max-[1025px]:flex-col max-md:gap-[4vw] max-[1025px]:items-start max-[1025px]:gap-6">
-          
-          {/* Left Column: Timeline items */}
-          <div className="w-[32%] relative max-md:w-full max-[1025px]:w-full">
+        <div className="portfolio-showcase-container">
+          {/* Left Column: Clean 4-Project Navigation Timeline */}
+          <div className="portfolio-timeline-col">
             {/* Background line */}
-            <div className="absolute left-1 bg-white/20 top-[2.5vw] max-[1025px]:top-[1vw] h-[27vw] max-[1025px]:h-[38vw] max-md:h-[58vw] w-px" />
+            <div className="absolute left-1 bg-white/20 top-4 bottom-4 w-px" />
             {/* Progress line */}
             <div
               ref={progressLineRef}
-              className="absolute left-1 bg-white origin-top top-[2.5vw] max-[1025px]:top-[1vw] h-[27vw] max-[1025px]:h-[38vw] max-md:h-[58vw] w-px"
+              className="absolute left-1 bg-white origin-top top-4 bottom-4 w-px"
             />
 
             {/* Timeline List */}
-            <div className="flex flex-col max-[1025px]:gap-[1.5vw] max-md:gap-[2.5vw]">
-              {projects.map((p, idx) => (
-                <div
-                  key={p.id}
-                  ref={(el) => (textItemsRef.current[idx] = el)}
-                  onClick={() => scrollToProject(idx)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      scrollToProject(idx);
-                    }
-                  }}
-                  className="relative flex items-center gap-[1.2vw] max-md:gap-[3.5vw] cursor-pointer transition-opacity duration-300"
-                  style={{ minHeight: '5.2vw' }}
-                >
-                  <span
-                    ref={(el) => (dotsRef.current[idx] = el)}
-                    className="w-[10px] h-[10px] mt-[-0.8vw] max-md:mt-[-1.5vw] bg-[#F06A0E] rounded-full border border-white/50 shrink-0 transition-all duration-300"
-                  />
-                  <div>
-                    <h3 className="text-[1.3vw] max-[1025px]:text-[2.6vw] max-md:text-[3.8vw] font-medium leading-snug">
-                      {p.name}
-                    </h3>
-                    <p className="text-[0.9vw] max-[1025px]:text-[1.8vw] max-md:text-[2.8vw] text-white/85 mt-0.5 leading-snug">
-                      {p.subtitle}
-                    </p>
+            <div className="flex flex-col gap-2">
+              {projectsData.map((p, idx) => {
+                const isActive = activeIdx === idx;
+                return (
+                  <div
+                    key={p.id}
+                    ref={(el) => (textItemsRef.current[idx] = el)}
+                    onClick={() => scrollToProject(idx)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        scrollToProject(idx);
+                      }
+                    }}
+                    className={`portfolio-timeline-item ${isActive ? 'active' : ''}`}
+                  >
+                    <span
+                      ref={(el) => (dotsRef.current[idx] = el)}
+                      className="w-[10px] h-[10px] bg-[#F06A0E] rounded-full border border-white/50 shrink-0 transition-all duration-300"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="portfolio-item-number">
+                          {p.number}
+                        </span>
+                        <h3 className="portfolio-item-title truncate">
+                          {p.name}
+                        </h3>
+                      </div>
+                      <p className="portfolio-item-sub truncate">
+                        {p.navSubtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Right Column: Stacked Mockup Cards */}
-          <div className="w-full h-[38vw] relative rounded-xl overflow-hidden max-[1025px]:w-full max-[1025px]:h-[50vw] max-md:h-[62vw] max-[1025px]:rounded-lg shadow-2xl border border-white/20">
-            {projects.map((p, idx) => (
-              <div
-                key={p.id}
-                ref={(el) => (cardsRef.current[idx] = el)}
-                className="mockup-card absolute inset-0 flex flex-col rounded-xl overflow-hidden max-[1025px]:rounded-lg will-change-transform shadow-2xl"
-                style={{ zIndex: idx + 1 }}
-              >
-                {/* Mockup Top Window Bar with Solid Opaque Background */}
-                <div className="mockup-header">
-                  {/* Window Controls & Label */}
-                  <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shrink-0" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shrink-0" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shrink-0" />
-                    </div>
-                    <span className="text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] text-white/70 font-mono ml-2 truncate whitespace-nowrap">
-                      {p.windowLabel}
-                    </span>
-                  </div>
+          <div className="portfolio-cards-col">
+            {projectsData.map((p, idx) => {
+              const currentMediaIdx = selectedMedia[p.id] || 0;
+              const currentMedia = p.mediaViews[currentMediaIdx] || p.mediaViews[0];
 
-                  {/* Window Actions */}
-                  <div className="flex items-center gap-2 shrink-0 ml-2">
-                    <span
-                      className="mockup-badge text-[0.68vw] max-[1025px]:text-[1.6vw] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider text-white whitespace-nowrap"
-                      style={{ backgroundColor: `${p.badgeColor}33`, color: p.badgeColor }}
-                    >
-                      {p.badge}
-                    </span>
-                    {p.repoUrl && (
-                      <a
-                        href={p.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        aria-label={`View ${p.name} on GitHub`}
-                        className="flex items-center gap-1 text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] px-2 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
-                      >
-                        <Github className="w-3 h-3 max-md:w-3.5 max-md:h-3.5" />
-                        <span className="max-md:hidden">GitHub</span>
-                      </a>
-                    )}
-                    {p.liveUrl && (
-                      <a
-                        href={p.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        aria-label={`Open live demo for ${p.name}`}
-                        className="flex items-center gap-1 text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] px-2 py-1 rounded-md bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 transition-colors cursor-pointer shrink-0"
-                      >
-                        <ExternalLink className="w-3 h-3 max-md:w-3.5 max-md:h-3.5" />
-                        <span className="max-md:hidden">Live Demo</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setModalProject(p);
-                      }}
-                      aria-label={`Inspect ${p.name} in high resolution`}
-                      className="flex items-center gap-1 text-[0.72vw] max-[1025px]:text-[1.8vw] max-md:text-[2.6vw] px-2 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer shrink-0"
-                    >
-                      <Maximize2 className="w-3 h-3 max-md:w-3.5 max-md:h-3.5" />
-                      <span className="max-md:hidden">Inspect</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Mockup Canvas Image Frame */}
+              return (
                 <div
-                  className="mockup-canvas relative flex-1 w-full flex items-center justify-center overflow-hidden cursor-zoom-in group"
-                  onClick={() => setModalProject(p)}
+                  key={p.id}
+                  ref={(el) => (cardsRef.current[idx] = el)}
+                  className="mockup-card absolute inset-0 flex flex-col rounded-xl overflow-hidden will-change-transform shadow-2xl"
+                  style={{ zIndex: idx + 1 }}
                 >
-                  <img
-                    alt={p.name}
-                    loading="lazy"
-                    width="1920"
-                    height="1080"
-                    className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover:scale-[1.01]"
-                    src={p.imgSrc}
-                  />
+                  {/* Mockup Top Window Bar */}
+                  <div className="mockup-header shrink-0">
+                    {/* Window Controls & Label */}
+                    <div className="mockup-header-left">
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shrink-0" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shrink-0" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shrink-0" />
+                      </div>
+                      <span className="text-xs text-white/70 font-mono ml-2 truncate">
+                        {p.windowLabel}
+                      </span>
+                    </div>
 
-                  {/* Hover Inspect Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[0.85vw] max-md:text-[2.8vw] flex items-center gap-2 shadow-xl">
-                      <Maximize2 className="w-4 h-4" />
-                      <span>Click to Inspect High-Resolution View</span>
+                    {/* Window Action Badges & Links */}
+                    <div className="mockup-header-right">
+                      <span
+                        className="mockup-badge text-[11px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider text-white"
+                        style={{ backgroundColor: `${p.badgeColor}33`, color: p.badgeColor }}
+                      >
+                        {p.badge}
+                      </span>
+                      {p.archifyUrl && (
+                        <a
+                          href={p.archifyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Open interactive architecture for ${p.name}`}
+                          className="mockup-btn mockup-btn-archify"
+                        >
+                          <Layers className="w-3 h-3" />
+                          <span>Architecture</span>
+                        </a>
+                      )}
+                      {p.liveUrl && (
+                        <a
+                          href={p.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`Open live demo for ${p.name}`}
+                          className="mockup-btn mockup-btn-primary"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                          <span>Live Demo</span>
+                        </a>
+                      )}
+                      {p.repoUrl && (
+                        <a
+                          href={p.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          aria-label={`View ${p.name} on GitHub`}
+                          className="mockup-btn"
+                        >
+                          <Github className="w-3 h-3" />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openModal(p, currentMediaIdx);
+                        }}
+                        aria-label={`Inspect ${p.name} in high resolution`}
+                        className="mockup-btn"
+                      >
+                        <Maximize2 className="w-3 h-3" />
+                        <span>Inspect</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Multi-Artifact Tab Switcher (Consolidates views into single project) */}
+                  {p.mediaViews.length > 1 && (
+                    <div className="artifact-tabs-bar">
+                      <span className="text-[11px] font-mono text-white/40 uppercase tracking-wider mr-1">
+                        Artifacts:
+                      </span>
+                      {p.mediaViews.map((view, vIdx) => {
+                        const isSelected = vIdx === currentMediaIdx;
+                        return (
+                          <button
+                            key={view.id}
+                            onClick={(e) => handleSelectMedia(p.id, vIdx, e)}
+                            className={`artifact-tab-btn ${isSelected ? 'active' : ''}`}
+                          >
+                            <span>{view.label}</span>
+                            {isSelected && (
+                              <span
+                                className="w-1.5 h-1.5 rounded-full"
+                                style={{ backgroundColor: p.badgeColor }}
+                              />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Mockup Canvas Image Frame */}
+                  <div
+                    className="mockup-canvas relative flex-1 min-h-0 w-full flex items-center justify-center overflow-hidden cursor-zoom-in group"
+                    onClick={() => openModal(p, currentMediaIdx)}
+                  >
+                    <img
+                      key={currentMedia.imgSrc}
+                      alt={`${p.name} - ${currentMedia.label}`}
+                      loading="lazy"
+                      width="1920"
+                      height="1080"
+                      className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-[1.01]"
+                      src={currentMedia.imgSrc}
+                    />
+
+                    {/* View Description Subtitle Overlay at bottom of canvas */}
+                    <div className="mockup-caption-overlay absolute bottom-2 left-3 right-3 flex items-center justify-between pointer-events-none">
+                      <span className="text-[11px] text-white/85 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 max-w-[85%] truncate font-mono">
+                        {currentMedia.caption}
+                      </span>
+                    </div>
+
+                    {/* Hover Inspect Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                      <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs flex items-center gap-2 shadow-xl">
+                        <Maximize2 className="w-4 h-4" />
+                        <span>Click to Inspect High-Resolution View</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Live Workflow Pipeline Simulation Strip */}
+                  <div className="pipeline-footer-bar">
+                    {/* 5-Stage Live Pipeline Stream */}
+                    <div className="pipeline-nodes-wrapper">
+                      {/* Pulse Packet Flow Animation */}
+                      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-white/10 pointer-events-none">
+                        <div className="pipeline-pulse-dot" style={{ backgroundColor: p.badgeColor }} />
+                      </div>
+
+                      {p.workflowSteps.map((step, sIdx) => (
+                        <React.Fragment key={sIdx}>
+                          <div className="pipeline-node-chip">
+                            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: p.badgeColor }} />
+                            <span className="truncate max-w-[120px]">{step.label}</span>
+                          </div>
+                          {sIdx < p.workflowSteps.length - 1 && (
+                            <ArrowRight className="w-3 h-3 text-white/30 shrink-0" />
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+
+                    {/* Trace Indicator Tag */}
+                    <div className="hidden lg:flex items-center gap-1.5 text-[11px] text-white/50 font-mono shrink-0">
+                      <Cpu className="w-3.5 h-3.5 text-sky-400" />
+                      <span>SIMULATED WORKFLOW TRACE</span>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -453,20 +492,20 @@ export default function Portfolio() {
               className="flex items-center justify-between px-5 py-3.5 border-b border-white/10"
               style={{ backgroundColor: '#15161E' }}
             >
-              <div>
+              <div className="min-w-0 flex-1 pr-4">
                 <div className="flex items-center gap-3">
                   <span
-                    className="text-xs px-2.5 py-0.5 rounded-full font-semibold uppercase tracking-wider"
+                    className="text-xs px-2.5 py-0.5 rounded-full font-semibold uppercase tracking-wider shrink-0"
                     style={{ backgroundColor: `${modalProject.badgeColor}33`, color: modalProject.badgeColor }}
                   >
                     {modalProject.badge}
                   </span>
-                  <h3 id="modal-project-title" className="text-base sm:text-lg md:text-xl font-medium text-white">
-                    {modalProject.name}
+                  <h3 id="modal-project-title" className="text-base sm:text-lg md:text-xl font-medium text-white truncate">
+                    {modalProject.fullName || modalProject.name}
                   </h3>
                 </div>
                 <p className="text-xs md:text-sm text-white/70 mt-1 max-w-3xl leading-relaxed">
-                  {modalProject.description}
+                  {modalProject.oneLiner}
                 </p>
               </div>
 
@@ -479,25 +518,55 @@ export default function Portfolio() {
               </button>
             </div>
 
+            {/* Modal View Selector Tabs (when multiple views available) */}
+            {modalProject.mediaViews.length > 1 && (
+              <div
+                className="px-5 py-2 flex items-center gap-2 border-b border-white/10 overflow-x-auto"
+                style={{ backgroundColor: '#0d0e14' }}
+              >
+                <span className="text-xs text-white/50 font-mono mr-2">Available Artifacts:</span>
+                {modalProject.mediaViews.map((view, vIdx) => {
+                  const isCurrent = vIdx === modalMediaIdx;
+                  return (
+                    <button
+                      key={view.id}
+                      onClick={() => setModalMediaIdx(vIdx)}
+                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer flex items-center gap-1.5 ${
+                        isCurrent
+                          ? 'bg-white/20 text-white font-medium border border-white/30'
+                          : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-transparent'
+                      }`}
+                    >
+                      <span>{view.label}</span>
+                      <span className="text-[10px] text-white/40">({view.badge})</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
             {/* Modal Image Viewer */}
             <div
-              className="relative flex-1 min-h-[40vh] max-h-[66vh] overflow-auto flex items-center justify-center p-3"
+              className="relative flex-1 min-h-[40vh] max-h-[62vh] overflow-auto flex flex-col items-center justify-center p-3"
               style={{ backgroundColor: '#070709' }}
             >
               <img
-                src={modalProject.highResSrc}
-                alt={modalProject.name}
-                className="max-w-full max-h-[62vh] object-contain rounded-lg shadow-lg"
+                src={modalProject.mediaViews[modalMediaIdx]?.highResSrc || modalProject.mediaViews[0]?.highResSrc}
+                alt={`${modalProject.name} High Resolution Artifact`}
+                className="max-w-full max-h-[58vh] object-contain rounded-lg shadow-lg"
               />
+              <p className="text-xs text-white/60 mt-2 text-center max-w-2xl font-mono">
+                {modalProject.mediaViews[modalMediaIdx]?.caption}
+              </p>
             </div>
 
             {/* Modal Technical Highlights Footer */}
             <div
-              className="px-5 py-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm"
+              className="px-5 py-3.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm"
               style={{ backgroundColor: '#12131A' }}
             >
-              <div className="flex flex-wrap items-center gap-2" style={{ gap: '8px' }}>
-                <span className="text-white/50 text-xs mr-1">System Architecture Tags:</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-white/50 text-xs mr-1">Verified Technologies:</span>
                 {modalProject.tags.map((tag) => (
                   <span
                     key={tag}
@@ -509,6 +578,18 @@ export default function Portfolio() {
               </div>
 
               <div className="flex items-center gap-2">
+                {modalProject.archifyUrl && (
+                  <a
+                    href={modalProject.archifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/30 text-xs font-mono transition-colors"
+                  >
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Archify Suite</span>
+                    <ExternalLink className="w-3 h-3 text-sky-300/60 ml-0.5" />
+                  </a>
+                )}
                 {modalProject.liveUrl && (
                   <a
                     href={modalProject.liveUrl}
@@ -532,9 +613,9 @@ export default function Portfolio() {
                     <ExternalLink className="w-3 h-3 text-white/60 ml-0.5" />
                   </a>
                 )}
-                <div className="flex items-center gap-1.5 text-white/50 text-xs">
-                  <span>Architecture</span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="flex items-center gap-1.5 text-white/50 text-xs font-mono">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Verified Architecture</span>
                 </div>
               </div>
             </div>
