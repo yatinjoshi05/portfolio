@@ -67,8 +67,8 @@ export const projectsData = [
     solution:
       '16 decoupled idempotent state machines with database-backed skip-locked job leasing, multi-provider AI failover (Groq primary with instant Gemini fallback), automated FFmpeg visual QA, and idempotent social publishing.',
     badge: 'Production Engine',
-    badgeColor: '#8B5CF6',
-    windowLabel: 'CAP Control Center • 16-Workflow Engine',
+    badgeColor: '#EF4444',
+    windowLabel: 'CAP Engine • 16-Workflow Architecture',
     repoUrl: 'https://github.com/yatinjoshi05/Content-Automation-Platform',
     archifyUrl: 'https://yatinjoshi05.github.io/content-automation-platform/',
     tags: ['16 n8n Workflows', 'PostgreSQL 16 Engine', 'CoreUI Dashboard', 'Groq & Gemini Failover', 'FFmpeg 9:16 QA'],
@@ -80,6 +80,14 @@ export const projectsData = [
       { label: 'Idempotent Publish', desc: 'YouTube & Meta Graph Adapters' }
     ],
     mediaViews: [
+      {
+        id: 'workflow',
+        label: 'Production Workflow',
+        badge: '16-Workflow Architecture',
+        imgSrc: '/media/projects/content-automation-workflow.webp',
+        highResSrc: '/media/projects/content-automation-workflow.png',
+        caption: '16-stage event-driven pipeline tracing trend discovery, dual-provider AI script generation, FFmpeg QA, and YouTube publication.'
+      },
       {
         id: 'dashboard',
         label: 'Operations Command Center',
@@ -95,14 +103,6 @@ export const projectsData = [
         imgSrc: '/media/projects/content-automation-models.png',
         highResSrc: '/media/projects/content-automation-models.png',
         caption: 'Zero-overhead failover policy routing between Groq LLaMA 3.3 and Google Gemini on HTTP 429/503.'
-      },
-      {
-        id: 'architecture',
-        label: 'System Architecture',
-        badge: 'Master Archify System Map',
-        imgSrc: '/media/projects/content-automation-archify-online.png',
-        highResSrc: '/media/projects/content-automation-archify-online.png',
-        caption: 'Verified architecture suite detailing the 16 decoupled state machines and PostgreSQL skip-locked queue.'
       }
     ]
   },

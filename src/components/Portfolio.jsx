@@ -173,16 +173,27 @@ export default function Portfolio() {
     };
   }, []);
 
-  // Keyboard navigation for modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (modalProject && e.key === 'Escape') {
-        setModalProject(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [modalProject]);
+  // Close modal helper with browser history synchronization
+  const closeModal = (fromPopState = false) => {
+    setModalProject(null);
+    if (!fromPopState && window.history.state?.modalOpen) {
+      window.history.back();
+    }
+  };
+
+  const openModal = (project, mediaIdx = 0) => {
+    setModalProject(project);
+    setModalMediaIdx(mediaIdx);
+    try {
+      window.history.pushState(
+        { modalOpen: true, projectId: project.id, mediaIdx },
+        '',
+        `${window.location.pathname}${window.location.search}#inspect-${project.id}`
+      );
+    } catch {
+      // safe fallback if history manipulation is restricted
+    }
+  };
 
   const scrollToProject = (idx) => {
     const st = tlRef.current?.scrollTrigger;
@@ -201,10 +212,34 @@ export default function Portfolio() {
     }));
   };
 
-  const openModal = (project, mediaIdx = 0) => {
-    setModalProject(project);
-    setModalMediaIdx(mediaIdx);
-  };
+  // Synchronize modal state with Browser Back/Forward navigation
+  useEffect(() => {
+    const handlePopState = (e) => {
+      if (e.state?.modalOpen && e.state.projectId) {
+        const found = projectsData.find((item) => item.id === e.state.projectId);
+        if (found) {
+          setModalProject(found);
+          setModalMediaIdx(e.state.mediaIdx || 0);
+          return;
+        }
+      }
+      setModalProject(null);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Keyboard navigation for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (modalProject && e.key === 'Escape') {
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [modalProject]);
 
   return (
     <section
@@ -302,26 +337,32 @@ export default function Portfolio() {
                 >
                   {/* Mockup Top Window Bar */}
                   <div className="mockup-header shrink-0">
-                    {/* Window Controls & Label */}
+                    {/* Window Controls & Clean Project Title / Status */}
                     <div className="mockup-header-left">
-                      <div className="flex items-center gap-1.5 shrink-0">
+                      <div className="flex items-center gap-1.5 shrink-0" aria-hidden="true">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shrink-0" />
                         <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shrink-0" />
                         <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shrink-0" />
                       </div>
-                      <span className="text-xs text-white/70 font-mono ml-2 truncate">
-                        {p.windowLabel}
-                      </span>
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="mockup-project-title font-medium text-white text-[13px] tracking-tight truncate">
+                          {p.name}
+                        </span>
+                        <span
+                          className="mockup-badge text-[10px] px-2 py-0.5 rounded-full font-mono uppercase tracking-wider shrink-0"
+                          style={{
+                            backgroundColor: `${p.badgeColor}22`,
+                            color: p.badgeColor,
+                            border: `1px solid ${p.badgeColor}44`
+                          }}
+                        >
+                          {p.badge}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Window Action Badges & Links */}
                     <div className="mockup-header-right">
-                      <span
-                        className="mockup-badge text-[11px] px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider text-white"
-                        style={{ backgroundColor: `${p.badgeColor}33`, color: p.badgeColor }}
-                      >
-                        {p.badge}
-                      </span>
                       {p.archifyUrl && (
                         <a
                           href={p.archifyUrl}
@@ -367,7 +408,7 @@ export default function Portfolio() {
                           openModal(p, currentMediaIdx);
                         }}
                         aria-label={`Inspect ${p.name} in high resolution`}
-                        className="mockup-btn"
+                        className="mockup-btn mockup-btn-inspect"
                       >
                         <Maximize2 className="w-3 h-3" />
                         <span>Inspect</span>
@@ -402,7 +443,7 @@ export default function Portfolio() {
                     </div>
                   )}
 
-                  {/* Mockup Canvas Image Frame */}
+                  {/* Mockup Canvas Image Frame (Unobstructed View) */}
                   <div
                     className="mockup-canvas relative flex-1 min-h-0 w-full flex items-center justify-center overflow-hidden cursor-zoom-in group"
                     onClick={() => openModal(p, currentMediaIdx)}
@@ -417,13 +458,6 @@ export default function Portfolio() {
                       src={currentMedia.imgSrc}
                     />
 
-                    {/* View Description Subtitle Overlay at bottom of canvas */}
-                    <div className="mockup-caption-overlay absolute bottom-2 left-3 right-3 flex items-center justify-between pointer-events-none">
-                      <span className="text-[11px] text-white/85 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 max-w-[85%] truncate font-mono">
-                        {currentMedia.caption}
-                      </span>
-                    </div>
-
                     {/* Hover Inspect Overlay */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                       <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs flex items-center gap-2 shadow-xl">
@@ -431,6 +465,17 @@ export default function Portfolio() {
                         <span>Click to Inspect High-Resolution View</span>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Dedicated Description Bar (Outside the visual, completely unobstructed) */}
+                  <div className="card-description-bar">
+                    <span
+                      className="card-description-indicator"
+                      style={{ backgroundColor: p.badgeColor }}
+                    />
+                    <p className="card-description-text truncate">
+                      {currentMedia.caption || p.oneLiner}
+                    </p>
                   </div>
 
                   {/* Live Workflow Pipeline Simulation Strip */}
@@ -477,7 +522,7 @@ export default function Portfolio() {
       {modalProject && (
         <div
           className="fixed inset-0 z-9999 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
-          onClick={() => setModalProject(null)}
+          onClick={() => closeModal()}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-project-title"
@@ -510,7 +555,7 @@ export default function Portfolio() {
               </div>
 
               <button
-                onClick={() => setModalProject(null)}
+                onClick={() => closeModal()}
                 aria-label="Close modal"
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer shrink-0 ml-4"
               >
