@@ -31,8 +31,8 @@ export const SOCIAL_LINKS = {
 };
 
 export const RESUME_DATA = {
-  url: '/Yatin_Joshi_GTM_Engineer_Resume.pdf',
-  downloadFilename: 'Yatin_Joshi_GTM_Engineer_Resume.pdf',
+  url: '/Yatin_Joshi_GTM_Engineering_Resume.pdf',
+  downloadFilename: 'Yatin_Joshi_GTM_Engineering_Resume.pdf',
   label: 'Resume',
   description: 'View my professional experience and projects.',
   ariaLabel: 'Download or view Yatin Joshi’s Resume (PDF, opens in a new tab)',
